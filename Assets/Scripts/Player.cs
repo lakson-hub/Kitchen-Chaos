@@ -19,9 +19,12 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.D)) {
             inputVector.x = +1;
         }
-
+        
         inputVector = inputVector.normalized;
         Vector3 movementDirection = new Vector3(inputVector.x, 0, inputVector.y);
         transform.position += movementDirection * (movementSpeed * Time.deltaTime);
+
+        float rotationSpeed = 10f;
+        transform.forward = Vector3.Slerp(transform.forward, movementDirection, Time.deltaTime * rotationSpeed);
     }
 }
