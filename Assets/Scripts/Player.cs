@@ -9,27 +9,15 @@ public class Player : MonoBehaviour {
     
     private bool isWalking;
     private Vector3 lastInteractDirection;
+    private ClearCounter selectedCounter;
 
     private void Start() {
         playerInput.OnInteractAction += PlayerInput_OnInteractAction;
     }
 
     private void PlayerInput_OnInteractAction(object sender, EventArgs e) {
-        Vector2 inputVector = playerInput.GetMovementVectorNormalized();
-        Vector3 movementDirection = new Vector3(inputVector.x, 0, inputVector.y);
-
-        // We keep direction we are facing at all times!
-        if (movementDirection != Vector3.zero) {
-            lastInteractDirection = movementDirection;
-        }
-
-        // Checking what is in front of player
-        float interactDistance = 2f;
-        if (Physics.Raycast(transform.position, lastInteractDirection, out RaycastHit raycastHit, interactDistance, countersLayerMask)) {
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
-                // Raycast detected object that has ClearCounter component!
-                clearCounter.Interact();
-            }
+        if (selectedCounter != null) {
+            selectedCounter.Interact();
         }
     }
 
@@ -52,8 +40,17 @@ public class Player : MonoBehaviour {
         if (Physics.Raycast(transform.position, lastInteractDirection, out RaycastHit raycastHit, interactDistance, countersLayerMask)) {
             if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
                 // Raycast detected object that has ClearCounter component!
+                if (clearCounter != selectedCounter) {
+                    selectedCounter = clearCounter;
+                }
+            } else {
+                selectedCounter = null;
             }
+        } else {
+            selectedCounter = null;
         }
+        
+        Debug.Log(selectedCounter);
     }
 
     private void HandleMovement() {
