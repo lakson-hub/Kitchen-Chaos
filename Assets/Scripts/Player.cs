@@ -6,13 +6,34 @@ public class Player : MonoBehaviour {
     [SerializeField] private PlayerInput playerInput;
     
     private bool isWalking;
+    private Vector3 lastInteractDirection;
     
     private void Update() {
         HandleMovement();
+        HandleInteractions();
+    }
+
+    private void HandleInteractions() {
+        Vector2 inputVector = playerInput.GetMovementVectorNormalized();
+        Vector3 movementDirection = new Vector3(inputVector.x, 0, inputVector.y);
+
+        // We keep direction we are facing at all times!
+        if (movementDirection != Vector3.zero) {
+            lastInteractDirection = movementDirection;
+        }
+
+        // Checking what is in front of player
+        float interactDistance = 2f;
+        if (Physics.Raycast(transform.position, lastInteractDirection, out RaycastHit raycastHit, interactDistance)) {
+            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
+                // Raycast detected object that has ClearCounter component!
+                clearCounter.Interact();
+            }
+        }
     }
 
     private void HandleMovement() {
-                Vector2 inputVector = playerInput.GetMovementVectorNormalized();
+        Vector2 inputVector = playerInput.GetMovementVectorNormalized();
         Vector3 movementDirection = new Vector3(inputVector.x, 0, inputVector.y);
         float movementDistance = movementSpeed * Time.deltaTime;
         
