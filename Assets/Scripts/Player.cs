@@ -4,6 +4,7 @@ public class Player : MonoBehaviour {
 
     [SerializeField] private float movementSpeed = 7f;
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private LayerMask countersLayerMask;
     
     private bool isWalking;
     private Vector3 lastInteractDirection;
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour {
 
         // Checking what is in front of player
         float interactDistance = 2f;
-        if (Physics.Raycast(transform.position, lastInteractDirection, out RaycastHit raycastHit, interactDistance)) {
+        if (Physics.Raycast(transform.position, lastInteractDirection, out RaycastHit raycastHit, interactDistance, countersLayerMask)) {
             if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
                 // Raycast detected object that has ClearCounter component!
                 clearCounter.Interact();
