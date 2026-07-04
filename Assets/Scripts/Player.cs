@@ -8,7 +8,11 @@ public class Player : MonoBehaviour {
     private bool isWalking;
     
     private void Update() {
-        Vector2 inputVector = playerInput.GetMovementVectorNormalized();
+        HandleMovement();
+    }
+
+    private void HandleMovement() {
+                Vector2 inputVector = playerInput.GetMovementVectorNormalized();
         Vector3 movementDirection = new Vector3(inputVector.x, 0, inputVector.y);
         float movementDistance = movementSpeed * Time.deltaTime;
         
