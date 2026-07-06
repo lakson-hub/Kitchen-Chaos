@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs {
-        public ClearCounter selectedCounter;
+        public BaseCounter selectedCounter;
     }
 
     [SerializeField] private float movementSpeed = 7f;
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
     
     private bool isWalking;
     private Vector3 lastInteractDirection;
-    private ClearCounter selectedCounter;
+    private BaseCounter baseCounter;
     private KitchenObject kitchenObject;
 
     private void Awake() {
@@ -33,8 +33,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
     }
 
     private void PlayerInput_OnInteractAction(object sender, EventArgs e) {
-        if (selectedCounter != null) {
-            selectedCounter.Interact(this);
+        if (baseCounter != null) {
+            baseCounter.Interact(this);
         }
     }
 
@@ -55,10 +55,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
         // Checking what is in front of player
         float interactDistance = 2f;
         if (Physics.Raycast(transform.position, lastInteractDirection, out RaycastHit raycastHit, interactDistance, countersLayerMask)) {
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
+            if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter)) {
                 // Raycast detected object that has ClearCounter component!
-                if (clearCounter != selectedCounter) {
-                    SetSelectedCounter(clearCounter);
+                if (baseCounter != this.baseCounter) {
+                    SetSelectedCounter(baseCounter);
                 }
             } else {
                 SetSelectedCounter(null);
@@ -118,8 +118,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
         return isWalking;
     }
 
-    private void SetSelectedCounter(ClearCounter selectedCounter) {
-        this.selectedCounter = selectedCounter;
+    private void SetSelectedCounter(BaseCounter selectedCounter) {
+        this.baseCounter = selectedCounter;
         
         OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs {
             selectedCounter = selectedCounter
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
     }
     
     public Transform GetKitchenObjectFollowTransform() {
-        return kitchenObjectHoldPoint;
+        return kitchenObjectHoldPoint; 
     }
 
     public void SetKitchenObject(KitchenObject kitchenObject) {
