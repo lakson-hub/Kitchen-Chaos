@@ -259,13 +259,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
     m_RemovedComponents:
     - {fileID: 6289625630049244101, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5261771210811040880, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2813433095548443000}
   m_SourcePrefab: {fileID: 100100000, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+--- !u!1 &500577380380085505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8143070647044102886, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+  m_PrefabInstance: {fileID: 8643419122842982375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1984025869602759304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7816906318471787887, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
@@ -293,5 +299,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4ab63f47ad81743b2e1461d558fce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectedCounterVisual
-  clearCounter: {fileID: 0}
-  selectedVisualGameObject: {fileID: 1984025869602759304}
+  baseCounter: {fileID: 7613619358994843399}
+  selectedVisualGameObjectArray:
+  - {fileID: 1984025869602759304}
+  - {fileID: 500577380380085505}
+  - {fileID: 8292644592782170348}
+  - {fileID: 8547764534500594442}
+--- !u!1 &8292644592782170348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 353237590725857035, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+  m_PrefabInstance: {fileID: 8643419122842982375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8547764534500594442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 102550813385737453, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+  m_PrefabInstance: {fileID: 8643419122842982375}
+  m_PrefabAsset: {fileID: 0}
