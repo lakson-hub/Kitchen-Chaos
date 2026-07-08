@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4ab63f47ad81743b2e1461d558fce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectedCounterVisual
-  baseCounter: {fileID: 0}
+  baseCounter: {fileID: 651437746191377146}
   selectedVisualGameObjectArray:
   - {fileID: 6993142185183161908}
   - {fileID: 6477182085788781277}
@@ -288,8 +288,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51102def3696b3f4faca065c786e388c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CuttingCounter
+  counterTopPoint: {fileID: 7855237607391626578}
+  cutKitchenObjectSO: {fileID: 11400000, guid: 5f43b1b591276724394e1f8a0a8c077a, type: 2}
 --- !u!4 &7049111348158991445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4120930714221546590, guid: d0310a9e326b3304b9fbd1345beb34aa, type: 3}
+  m_PrefabInstance: {fileID: 6404969463482744843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7855237607391626578 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3882222961427678553, guid: d0310a9e326b3304b9fbd1345beb34aa, type: 3}
   m_PrefabInstance: {fileID: 6404969463482744843}
   m_PrefabAsset: {fileID: 0}
