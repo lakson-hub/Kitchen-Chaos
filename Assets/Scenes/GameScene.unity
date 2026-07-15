@@ -3055,6 +3055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bac15bd7f08dcf448cba2d7dcb0176f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryManager
+  recipeListSO: {fileID: 11400000, guid: cedae0e0404a245439c8dc5bf920e687, type: 2}
 --- !u!1 &2013029313
 GameObject:
   m_ObjectHideFlags: 0
