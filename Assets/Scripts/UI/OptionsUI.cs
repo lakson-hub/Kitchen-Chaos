@@ -10,8 +10,22 @@ public class OptionsUI : MonoBehaviour {
     [SerializeField] private Button soundEffectsButton;
     [SerializeField] private Button musicButton;
     [SerializeField] private Button closeButton;
+    [SerializeField] private Button moveUpButton;
+    [SerializeField] private Button moveDownButton;
+    [SerializeField] private Button moveLeftButton;
+    [SerializeField] private Button moveRightButton;
+    [SerializeField] private Button interactButton;
+    [SerializeField] private Button interactAlternateButton;
+    [SerializeField] private Button pauseButton;
     [SerializeField] private TextMeshProUGUI soundEffectsTextMesh;
     [SerializeField] private TextMeshProUGUI musicTextMesh;
+    [SerializeField] private TextMeshProUGUI moveUpTextMesh;
+    [SerializeField] private TextMeshProUGUI moveDownTextMesh;
+    [SerializeField] private TextMeshProUGUI moveLeftTextMesh;
+    [SerializeField] private TextMeshProUGUI moveRightTextMesh;
+    [SerializeField] private TextMeshProUGUI interactTextMesh;
+    [SerializeField] private TextMeshProUGUI interactAlternateTextMesh;
+    [SerializeField] private TextMeshProUGUI pauseTextMesh;
 
     private void Awake() {
         Instance = this;
