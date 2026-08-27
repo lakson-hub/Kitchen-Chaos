@@ -60,6 +60,14 @@ public class OptionsUI : MonoBehaviour {
     private void UpdateVisual() {
         soundEffectsTextMesh.text = "Sound Effects: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
         musicTextMesh.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
+
+        moveUpTextMesh.text = PlayerInput.Instance.GetBindingText(PlayerInput.Binding.Move_Up);
+        moveDownTextMesh.text = PlayerInput.Instance.GetBindingText(PlayerInput.Binding.Move_Down);
+        moveLeftTextMesh.text = PlayerInput.Instance.GetBindingText(PlayerInput.Binding.Move_Left);
+        moveRightTextMesh.text = PlayerInput.Instance.GetBindingText(PlayerInput.Binding.Move_Right);
+        interactTextMesh.text = PlayerInput.Instance.GetBindingText(PlayerInput.Binding.Interact);
+        interactAlternateTextMesh.text = PlayerInput.Instance.GetBindingText(PlayerInput.Binding.InteractAlternate);
+        pauseTextMesh.text = PlayerInput.Instance.GetBindingText(PlayerInput.Binding.Pause);
     }
 
     public void Show() {
