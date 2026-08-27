@@ -78,4 +78,51 @@ public class PlayerInput : MonoBehaviour {
                 return playerInputActions.Player.Pause.bindings[0].ToDisplayString();
         }
     }
+
+    public void RebindBinding(Binding binding, Action onActionRebound) {
+        playerInputActions.Player.Disable();
+
+        InputAction inputAction;
+        int bindingIndex;
+        
+        switch (binding) {
+            default:
+            case Binding.Move_Up:
+                inputAction = playerInputActions.Player.Move;
+                bindingIndex = 1;
+                break;
+            case Binding.Move_Down:
+                inputAction = playerInputActions.Player.Move;
+                bindingIndex = 2;
+                break;
+            case Binding.Move_Left:
+                inputAction = playerInputActions.Player.Move;
+                bindingIndex = 3;
+                break;
+            case Binding.Move_Right:
+                inputAction = playerInputActions.Player.Move;
+                bindingIndex = 4;
+                break;
+            case Binding.Interact:
+                inputAction = playerInputActions.Player.Interact;
+                bindingIndex = 0;
+                break;
+            case Binding.InteractAlternate:
+                inputAction = playerInputActions.Player.InteractAlternate;
+                bindingIndex = 0;
+                break;
+            case Binding.Pause:
+                inputAction = playerInputActions.Player.Pause;
+                bindingIndex = 0;
+                break;
+        }
+
+        inputAction.PerformInteractiveRebinding(bindingIndex)
+            .OnComplete(callback => {
+                callback.Dispose();
+                playerInputActions.Player.Enable();
+                onActionRebound();
+            })
+            .Start();
+    }
 }
