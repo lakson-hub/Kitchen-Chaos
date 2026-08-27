@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour {
+
+    private const string PLAYER_PREFS_BINDINGS = "PlayerInputBindings";
     
     public static PlayerInput Instance { get; private set; }
 
@@ -24,7 +26,11 @@ public class PlayerInput : MonoBehaviour {
     
     private void Awake() {
         Instance = this;
+        
         playerInputActions = new PlayerInputActions();
+        if (PlayerPrefs.HasKey(PLAYER_PREFS_BINDINGS)) {
+            playerInputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS));
+        }
         playerInputActions.Player.Enable();
         
         playerInputActions.Player.Interact.performed += Interact_performed;
@@ -122,6 +128,9 @@ public class PlayerInput : MonoBehaviour {
                 callback.Dispose();
                 playerInputActions.Player.Enable();
                 onActionRebound();
+
+                PlayerPrefs.SetString(PLAYER_PREFS_BINDINGS, playerInputActions.SaveBindingOverridesAsJson());
+                PlayerPrefs.Save();
             })
             .Start();
     }
