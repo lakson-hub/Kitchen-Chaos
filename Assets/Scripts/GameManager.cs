@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
         GameOver,
     }
 
-    private const float GAME_PLAYING_TIMER_MAX = 20f;
+    private const float GAME_PLAYING_TIMER_MAX = 300f;
 
     private State state;
     private float countdownToStartTimer = 3f;
