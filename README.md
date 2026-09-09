@@ -23,10 +23,9 @@ Kitchen Chaos is a 3D Unity cooking game where you prepare meals under pressure,
 
 ## Controls
 
-- `W`, `A`, `S`, `D` - Move player one
-- `Arrow Keys` - Move player two
-- `E` - Interact / pick up / use counter for player one
-- `Right Shift` - Interact / pick up / use counter for player two
+- `W`, `A`, `S`, `D`/ `Arrow Keys` - Move player
+- `E` - Interact / pick up / use counter
+- `F` - Interact Alternate / cut the food on the counter
 - `Escape` - Pause / resume the game
 - `Play` button in the menu - Start the game
 - `Resume` button - Continue a paused game
